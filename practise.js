@@ -7,7 +7,7 @@ for(let i=0;i<arr.length;i++)
 
     if(arr[i]!=="FAIL")
     {
-      arr3=arr[i]
+      arr3.push(arr[i])
     }
 
 }
