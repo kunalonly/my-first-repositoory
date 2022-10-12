@@ -1,4 +1,5 @@
 const emailRef = document.querySelector(".email");
+const subStatus = document.querySelector(".subcription");
 
 // fetch("https://jsonplaceholder.typicode.com/users/1")
 //   .then((response) => {
@@ -17,22 +18,38 @@ const emailRef = document.querySelector(".email");
 
 // }
 
-
-function getSubcriptionStatus()
-{
-    return new Promise ((resolve,reject)=>{
-        resolve('VIP')
-
-    })
+function getSubcriptionStatus() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Undefined");
+    }, 2000);
+  });
 }
 
-getSubcriptionStatus().then(response=>console.log(response));
+//getSubcriptionStatus().then(response=>console.log(response));
 
-async function main()
-{
-   const data=await getSubcriptionStatus();
+function getVideo(getSubcriptionStatus) {
+  return new Promise((resolve, reject) => {
+    if (getSubcriptionStatus === "VIP") {
+      resolve("Show video");
+    } else if (getSubcriptionStatus === "FREE") {
+      resolve("Watch Trailer");
+    } else {
+      reject("No Video");
+    }
+  });
+}
 
-   emailRef.innerHTML=data
+async function main() {
+  const data = await getSubcriptionStatus();
+  emailRef.innerHTML = data;
+try {
+    const data1 = await getVideo(data);
+    subStatus.innerHTML = data1;
+  }
+ catch (error) {
+    console.log(error)
+    subStatus.innerHTML = error;
+}
 }
 main();
-
