@@ -28,7 +28,7 @@ function login(email,password)
 
     else
     {
-    console.log("Please provide Correct Passwoord");
+    console.log("Please provide Correct Password");
     }
 
     return;
